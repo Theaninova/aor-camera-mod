@@ -97,7 +97,7 @@ namespace ArtOfRallyCameraMod.Camera
             CarCamera.distance = CameraAngles[camIndex].distance;
             CarCamera.height = CameraAngles[camIndex].height;
             CarCamera.initialPitchAngle = CameraAngles[camIndex].initialPitchAngle;
-            CarCamera.yawResetSpeed = CameraAngles[camIndex].yawResetSpeed;
+            CarCamera.yawResetSpeed = CameraAngles[camIndex].YawResetSpeed;
             CarCamera.SetToWantedPositionImmediate();
         }
 
@@ -106,12 +106,12 @@ namespace ArtOfRallyCameraMod.Camera
             CameraAngles[8].distance = Main.Settings.Camera8Distance;
             CameraAngles[8].height = Main.Settings.Camera8Height;
             CameraAngles[8].initialPitchAngle = Main.Settings.Camera8Angle;
-            CameraAngles[8].yawResetSpeed = Main.Settings.Camera8YawResetSpeed;
+            CameraAngles[8].YawResetSpeed = Main.Settings.Camera8YawResetSpeed;
 
             CameraAngles[9].distance = Main.Settings.Camera9Distance;
             CameraAngles[9].height = Main.Settings.Camera9Height;
             CameraAngles[9].initialPitchAngle = Main.Settings.Camera9Angle;
-            CameraAngles[9].yawResetSpeed = Main.Settings.Camera9YawResetSpeed;
+            CameraAngles[9].YawResetSpeed = Main.Settings.Camera9YawResetSpeed;
         }
     }
 }

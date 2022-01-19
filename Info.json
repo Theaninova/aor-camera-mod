@@ -1,9 +1,9 @@
 ﻿{
   "Id": "CameraMod",
-  "Version": "0.2.0",
+  "Version": "0.3.0",
   "DisplayName": "Camera Mod",
-  "Author": "thoxx",
+  "Author": "thoxx, Theaninova",
   "EntryMethod": "CameraMod.Main.Load",
-  "HomePage": "https://github.com/thoxx/aor-camera-mod",
-  "Repository": "https://raw.githubusercontent.com/thoxx/aor-camera-mod/main/Repository.json"
+  "HomePage": "https://github.com/Theaninova/aor-camera-mod",
+  "Repository": "https://raw.githubusercontent.com/Theaninova/aor-camera-mod/main/Repository.json"
 }

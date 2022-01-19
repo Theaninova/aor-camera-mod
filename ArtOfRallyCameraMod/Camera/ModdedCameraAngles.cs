@@ -2,7 +2,7 @@
 {
     public class ModdedCameraAngle : CameraAngle
     {
-        public float yawResetSpeed;
+        public float YawResetSpeed;
 
         public ModdedCameraAngle(
             float distance,
@@ -12,7 +12,7 @@
             float yawResetSpeed = 10f
         ) : base(distance, height, initialPitchAngle, cameraType)
         {
-            this.yawResetSpeed = yawResetSpeed;
+            this.YawResetSpeed = yawResetSpeed;
         }
     }
 }

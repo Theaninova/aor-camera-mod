@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ArtOfRallyCameraMod.State;
 using UnityEngine;
 using UnityModManagerNet;
 
@@ -13,13 +12,20 @@ namespace ArtOfRallyCameraMod.Camera
         public static SceneryManager SceneryManager;
         public static CarCameras CarCamera;
 
+        public static bool IsInitialized;
+        public static bool IsInPhotoMode;
+        public static bool IsCameraEditor;
+
+        public const int CustomCamera1 = (int)CameraAngle.CameraAngles.CAMERA8 + 1;
+        public const int CustomCamera2 = CustomCamera1 + 1;
+
         public static void OnUpdate(UnityModManager.ModEntry modEntry, float dt)
         {
-            if (SceneryManager == null || ModState.IsInitialized) return;
+            if (SceneryManager == null || IsInitialized) return;
 
-            if (!GameState.IsInPhotoMode && Input.GetKeyUp(Main.Settings.CameraEditor.keyCode))
-                ModState.IsCameraEditor = !ModState.IsCameraEditor;
-            if (ModState.IsCameraEditor) CameraEditor.Edit(modEntry);
+            if (!IsInPhotoMode && Input.GetKeyUp(Main.Settings.CameraEditor.keyCode))
+                IsCameraEditor = !IsCameraEditor;
+            if (IsCameraEditor) CameraEditor.Edit(modEntry);
         }
 
         public static void InitCams()
@@ -27,7 +33,7 @@ namespace ArtOfRallyCameraMod.Camera
             CarCamera = Object.FindObjectOfType<CarCameras>();
             if (CarCamera == null) return;
 
-            ModState.IsInitialized = true;
+            IsInitialized = true;
         }
 
         public static void UpdateCamera(int camIndex)
@@ -41,15 +47,15 @@ namespace ArtOfRallyCameraMod.Camera
 
         public static void LoadCamerasFromSettings()
         {
-            CameraAngles[8].distance = Main.Settings.Camera8Distance;
-            CameraAngles[8].height = Main.Settings.Camera8Height;
-            CameraAngles[8].initialPitchAngle = Main.Settings.Camera8Angle;
-            YawResetSpeeds[8] = Main.Settings.Camera8YawResetSpeed;
+            CameraAngles[CustomCamera1].distance = Main.Settings.Camera8Distance;
+            CameraAngles[CustomCamera1].height = Main.Settings.Camera8Height;
+            CameraAngles[CustomCamera1].initialPitchAngle = Main.Settings.Camera8Angle;
+            YawResetSpeeds[CustomCamera1] = Main.Settings.Camera8YawResetSpeed;
 
-            CameraAngles[9].distance = Main.Settings.Camera9Distance;
-            CameraAngles[9].height = Main.Settings.Camera9Height;
-            CameraAngles[9].initialPitchAngle = Main.Settings.Camera9Angle;
-            YawResetSpeeds[9] = Main.Settings.Camera9YawResetSpeed;
+            CameraAngles[CustomCamera2].distance = Main.Settings.Camera9Distance;
+            CameraAngles[CustomCamera2].height = Main.Settings.Camera9Height;
+            CameraAngles[CustomCamera2].initialPitchAngle = Main.Settings.Camera9Angle;
+            YawResetSpeeds[CustomCamera2] = Main.Settings.Camera9YawResetSpeed;
         }
     }
 }

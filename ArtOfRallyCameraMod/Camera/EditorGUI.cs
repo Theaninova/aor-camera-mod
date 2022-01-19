@@ -1,5 +1,4 @@
-﻿using ArtOfRallyCameraMod.State;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityModManagerNet;
 
 namespace ArtOfRallyCameraMod.Camera
@@ -10,7 +9,7 @@ namespace ArtOfRallyCameraMod.Camera
 
         public static void OnFixedGUI(UnityModManager.ModEntry modEntry)
         {
-            if (!ModState.IsCameraEditor) return;
+            if (!CameraHandler.IsCameraEditor) return;
 
             GUI.Label(LabelRect, $"Camera Editor\n" +
                                  $"Current Camera: {(int)CameraHandler.CarCamera.CurrentCameraAngle.cameraType}\n" +

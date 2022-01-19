@@ -18,9 +18,8 @@ namespace ArtOfRallyCameraMod
             Settings = UnityModManager.ModSettings.Load<Settings.Settings>(modEntry);
             modEntry.OnUpdate = CameraHandler.OnUpdate;
             modEntry.OnFixedGUI = EditorGUI.OnFixedGUI;
-            modEntry.OnGUI = entry =>  Settings.Draw(entry);;
-            modEntry.OnSaveGUI = entry => Settings.Save(entry);;
-            modEntry.Logger.Log("Camera Mod loaded but not initialized");
+            modEntry.OnGUI = entry => Settings.Draw(entry);
+            modEntry.OnSaveGUI = entry => Settings.Save(entry);
 
             return true;
         }
@@ -30,7 +29,7 @@ namespace ArtOfRallyCameraMod
             CameraHandler.LoadCamerasFromSettings();
 
             // if current camera is a custom camera -> update current camera
-            var camIndex = (int) CameraHandler.CarCamera.CurrentCameraAngle.cameraType;
+            var camIndex = (int)CameraHandler.CarCamera.CurrentCameraAngle.cameraType;
             if (camIndex > 7)
             {
                 CameraHandler.UpdateCamera(camIndex);

@@ -1,16 +1,16 @@
-﻿using ArtOfRallyCameraMod.State;
+﻿using ArtOfRallyCameraMod.Camera;
 using HarmonyLib;
 
 namespace ArtOfRallyCameraMod.Patches.PixulPhotoMode
 {
     [HarmonyPatch(typeof(global::Pixul.PixulPhotoMode), nameof(Pixul.PixulPhotoMode.EnterPhotoMode))]
     [HarmonyPatch(typeof(global::Pixul.PixulPhotoMode), nameof(Pixul.PixulPhotoMode.EnterPhotoModeForView))]
-    public class PixulPhotoModeEnterPatch
+    public class EnterPatch
     {
         public static void Prefix()
         {
-            GameState.IsInPhotoMode = true;
-            ModState.IsCameraEditor = false;
+            CameraHandler.IsInPhotoMode = true;
+            CameraHandler.IsCameraEditor = false;
         }
     }
 }

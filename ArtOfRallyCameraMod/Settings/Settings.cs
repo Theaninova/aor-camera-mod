@@ -31,12 +31,18 @@ namespace ArtOfRallyCameraMod.Settings
 
         [Draw("Angle")] public float Camera8Angle = -1.0f;
 
+        [Draw("Yaw Reset Speed", DrawType.Slider, Min = 0, Max = 20)]
+        public float Camera8YawResetSpeed = 10.0f;
+
         [Header("Camera 9 (Defaults: 10.0 | 3.0 | -1.5)"), Space(15)] [Draw("Distance")]
         public float Camera9Distance = 10.0f;
 
         [Draw("Height")] public float Camera9Height = 3.0f;
 
         [Draw("Angle")] public float Camera9Angle = -1.5f;
+
+        [Draw("Yaw Reset Speed", DrawType.Slider, Min = 0, Max = 20)]
+        public float Camera9YawResetSpeed = 10.0f;
 
         public override void Save(UnityModManager.ModEntry modEntry)
         {

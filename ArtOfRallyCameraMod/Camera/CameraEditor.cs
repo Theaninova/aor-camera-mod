@@ -1,57 +1,52 @@
-﻿using ArtOfRallyCameraMod.State;
-using UnityModManagerNet;
+﻿using UnityModManagerNet;
 
 namespace ArtOfRallyCameraMod.Camera
 {
     public static class CameraEditor
     {
+        private const float MoveDelta = 0.5f;
+        
         public static void Edit(UnityModManager.ModEntry modEntry)
         {
             var isKeyPressed = false;
             var camIndex = (int) CameraHandler.CarCamera.CurrentCameraAngle.cameraType;
-            // -Height
+
             if (Input.GetKeyUp(Main.Settings.HeightMinus.keyCode))
             {
-                CameraHandler.CameraAngles[camIndex].height -= 0.5f;
+                CameraHandler.CameraAngles[camIndex].height -= MoveDelta;
                 isKeyPressed = true;
             }
 
-            // +Height
             if (Input.GetKeyUp(Main.Settings.HeightPlus.keyCode))
             {
-                CameraHandler.CameraAngles[camIndex].height += 0.5f;
+                CameraHandler.CameraAngles[camIndex].height += MoveDelta;
                 isKeyPressed = true;
             }
 
-            // -Distance
             if (Input.GetKeyUp(Main.Settings.DistanceMinus.keyCode))
             {
-                CameraHandler.CameraAngles[camIndex].distance -= 0.5f;
+                CameraHandler.CameraAngles[camIndex].distance -= MoveDelta;
                 isKeyPressed = true;
             }
 
-            // +Distance
             if (Input.GetKeyUp(Main.Settings.DistancePlus.keyCode))
             {
-                CameraHandler.CameraAngles[camIndex].distance += 0.5f;
+                CameraHandler.CameraAngles[camIndex].distance += MoveDelta;
                 isKeyPressed = true;
             }
 
-            // -Angle
             if (Input.GetKeyUp(Main.Settings.AngleMinus.keyCode))
             {
-                CameraHandler.CameraAngles[camIndex].initialPitchAngle -= 0.5f;
+                CameraHandler.CameraAngles[camIndex].initialPitchAngle -= MoveDelta;
                 isKeyPressed = true;
             }
 
-            // +Angle
             if (Input.GetKeyUp(Main.Settings.AnglePlus.keyCode))
             {
-                CameraHandler.CameraAngles[camIndex].initialPitchAngle += 0.5f;
+                CameraHandler.CameraAngles[camIndex].initialPitchAngle += MoveDelta;
                 isKeyPressed = true;
             }
 
-            // Reset Camera
             if (Input.GetKeyUp(Main.Settings.ResetCamera.keyCode))
             {
                 CameraHandler.CameraAngles[camIndex].distance = CameraHandler.CameraAnglesOriginals[camIndex].distance;
@@ -60,7 +55,6 @@ namespace ArtOfRallyCameraMod.Camera
                 isKeyPressed = true;
             }
 
-            // Update Current Cam
             if (isKeyPressed)
             {
                 CameraHandler.UpdateCamera(camIndex);

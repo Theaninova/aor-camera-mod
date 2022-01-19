@@ -8,8 +8,8 @@ namespace ArtOfRallyCameraMod.Camera
 {
     public static class CameraHandler
     {
-        private static List<CameraAngle> _cameraAngles;
-        private static List<CameraAngle> _cameraAnglesOriginals;
+        public static List<CameraAngle> CameraAngles;
+        public static List<CameraAngle> CameraAnglesOriginals;
         private static SceneryManager _sceneryManager;
         public static CarCameras CarCamera;
 
@@ -61,83 +61,7 @@ namespace ArtOfRallyCameraMod.Camera
                 }
             }
 
-            if (ModState.IsCameraEditor)
-            {
-                bool isKeyPressed = false;
-                int camIndex = (int)CarCamera.CurrentCameraAngle.cameraType;
-                // -Height
-                if (Input.GetKeyUp(Main.Settings.HeightMinus.keyCode))
-                {
-                    _cameraAngles[camIndex].height -= 0.5f;
-                    isKeyPressed = true;
-                }
-
-                // +Height
-                if (Input.GetKeyUp(Main.Settings.HeightPlus.keyCode))
-                {
-                    _cameraAngles[camIndex].height += 0.5f;
-                    isKeyPressed = true;
-                }
-
-                // -Distance
-                if (Input.GetKeyUp(Main.Settings.DistanceMinus.keyCode))
-                {
-                    _cameraAngles[camIndex].distance -= 0.5f;
-                    isKeyPressed = true;
-                }
-
-                // +Distance
-                if (Input.GetKeyUp(Main.Settings.DistancePlus.keyCode))
-                {
-                    _cameraAngles[camIndex].distance += 0.5f;
-                    isKeyPressed = true;
-                }
-
-                // -Angle
-                if (Input.GetKeyUp(Main.Settings.AngleMinus.keyCode))
-                {
-                    _cameraAngles[camIndex].initialPitchAngle -= 0.5f;
-                    isKeyPressed = true;
-                }
-
-                // +Angle
-                if (Input.GetKeyUp(Main.Settings.AnglePlus.keyCode))
-                {
-                    _cameraAngles[camIndex].initialPitchAngle += 0.5f;
-                    isKeyPressed = true;
-                }
-
-                // Reset Camera
-                if (Input.GetKeyUp(Main.Settings.ResetCamera.keyCode))
-                {
-                    _cameraAngles[camIndex].distance = _cameraAnglesOriginals[camIndex].distance;
-                    _cameraAngles[camIndex].height = _cameraAnglesOriginals[camIndex].height;
-                    _cameraAngles[camIndex].initialPitchAngle = _cameraAnglesOriginals[camIndex].initialPitchAngle;
-                    isKeyPressed = true;
-                }
-
-                // Update Current Cam
-                if (isKeyPressed)
-                {
-                    UpdateCamera(camIndex);
-                    // if custom camera is active -> save changed settings to mod settings
-                    switch (camIndex)
-                    {
-                        case 8:
-                            Main.Settings.Camera8Distance = _cameraAngles[camIndex].distance;
-                            Main.Settings.Camera8Height = _cameraAngles[camIndex].height;
-                            Main.Settings.Camera8Angle = _cameraAngles[camIndex].initialPitchAngle;
-                            Main.Settings.Save(modEntry);
-                            break;
-                        case 9:
-                            Main.Settings.Camera9Distance = _cameraAngles[camIndex].distance;
-                            Main.Settings.Camera9Height = _cameraAngles[camIndex].height;
-                            Main.Settings.Camera9Angle = _cameraAngles[camIndex].initialPitchAngle;
-                            Main.Settings.Save(modEntry);
-                            break;
-                    }
-                }
-            }
+            if (ModState.IsCameraEditor) CameraEditor.Edit(modEntry);
         }
 
         private static void InitCams(UnityModManager.ModEntry modEntry)
@@ -147,21 +71,21 @@ namespace ArtOfRallyCameraMod.Camera
 
             var prop = CarCamera.GetType().GetField("CameraAnglesList",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            if (_cameraAngles == null && prop != null)
+            if (CameraAngles == null && prop != null)
             {
-                _cameraAngles = (List<CameraAngle>)prop.GetValue(CarCamera);
+                CameraAngles = (List<CameraAngle>)prop.GetValue(CarCamera);
                 //TODO: hood cam
-                _cameraAngles.Add(new CameraAngle(7f, 2f, -1f, (CameraAngle.CameraAngles)8));
-                _cameraAngles.Add(new CameraAngle(10f, 3f, -1.5f, (CameraAngle.CameraAngles)9));
+                CameraAngles.Add(new CameraAngle(7f, 2f, -1f, (CameraAngle.CameraAngles)8));
+                CameraAngles.Add(new CameraAngle(10f, 3f, -1.5f, (CameraAngle.CameraAngles)9));
 
                 //Deep Copy original cameras
-                _cameraAnglesOriginals = _cameraAngles.ConvertAll(camera =>
+                CameraAnglesOriginals = CameraAngles.ConvertAll(camera =>
                     new CameraAngle(camera.distance, camera.height, camera.initialPitchAngle, camera.cameraType));
                 LoadCamerasFromSettings();
                 modEntry.Logger.Log("Initialized cameras and loaded cameras from settings");
             }
 
-            prop?.SetValue(CarCamera, _cameraAngles);
+            prop?.SetValue(CarCamera, CameraAngles);
 
             modEntry.Logger.Log("Camera Mod initialized");
 
@@ -170,21 +94,21 @@ namespace ArtOfRallyCameraMod.Camera
 
         public static void UpdateCamera(int camIndex)
         {
-            CarCamera.distance = _cameraAngles[camIndex].distance;
-            CarCamera.height = _cameraAngles[camIndex].height;
-            CarCamera.initialPitchAngle = _cameraAngles[camIndex].initialPitchAngle;
+            CarCamera.distance = CameraAngles[camIndex].distance;
+            CarCamera.height = CameraAngles[camIndex].height;
+            CarCamera.initialPitchAngle = CameraAngles[camIndex].initialPitchAngle;
             CarCamera.SetToWantedPositionImmediate();
         }
 
         public static void LoadCamerasFromSettings()
         {
-            _cameraAngles[8].distance = Main.Settings.Camera8Distance;
-            _cameraAngles[8].height = Main.Settings.Camera8Height;
-            _cameraAngles[8].initialPitchAngle = Main.Settings.Camera8Angle;
+            CameraAngles[8].distance = Main.Settings.Camera8Distance;
+            CameraAngles[8].height = Main.Settings.Camera8Height;
+            CameraAngles[8].initialPitchAngle = Main.Settings.Camera8Angle;
 
-            _cameraAngles[9].distance = Main.Settings.Camera9Distance;
-            _cameraAngles[9].height = Main.Settings.Camera9Height;
-            _cameraAngles[9].initialPitchAngle = Main.Settings.Camera9Angle;
+            CameraAngles[9].distance = Main.Settings.Camera9Distance;
+            CameraAngles[9].height = Main.Settings.Camera9Height;
+            CameraAngles[9].initialPitchAngle = Main.Settings.Camera9Angle;
         }
     }
 }

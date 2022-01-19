@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using ArtOfRallyCameraMod.Camera;
 using HarmonyLib;
+using UnityEngine;
+
 // ReSharper disable UnusedType.Global
 // ReSharper disable UnusedMember.Global
 
@@ -10,10 +12,11 @@ namespace ArtOfRallyCameraMod.Patches.CarCameras
     [HarmonyPatch(typeof(global::CarCameras), "Start")]
     public class StartPatch
     {
-        // ReSharper disable once InconsistentNaming
-        public static void Postfix(ref List<CameraAngle> ___CameraAnglesList)
+        // ReSharper disable twice InconsistentNaming
+        public static void Postfix(global::CarCameras __instance, ref List<CameraAngle> ___CameraAnglesList)
         {
             CameraHandler.CameraAngles = ___CameraAnglesList;
+            CameraHandler.CarCamera = __instance;
 
             //TODO: hood cam
             ___CameraAnglesList.Add(new CameraAngle(7f, 2f, -1f,

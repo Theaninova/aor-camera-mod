@@ -16,8 +16,6 @@ namespace ArtOfRallyCameraMod.Patches.SceneryManager
             CameraHandler.IsCameraEditor = false;
 
             CameraHandler.SceneryManager = __instance;
-
-            CameraHandler.InitCams();
         }
     }
 }

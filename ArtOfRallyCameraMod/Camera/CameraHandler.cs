@@ -28,14 +28,6 @@ namespace ArtOfRallyCameraMod.Camera
             if (IsCameraEditor) CameraEditor.Edit(modEntry);
         }
 
-        public static void InitCams()
-        {
-            CarCamera = Object.FindObjectOfType<CarCameras>();
-            if (CarCamera == null) return;
-
-            IsInitialized = true;
-        }
-
         public static void UpdateCamera(int camIndex)
         {
             CarCamera.distance = CameraAngles[camIndex].distance;

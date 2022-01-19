@@ -1,9 +1,12 @@
 ﻿{
   "Id": "CameraMod",
   "Version": "0.3.0",
+  "ManagerVersion": "0.24.0.0",
+  "GameVersion": "1.3.3a",
   "DisplayName": "Camera Mod",
   "Author": "thoxx, Theaninova",
-  "EntryMethod": "CameraMod.Main.Load",
+  "EntryMethod": "ArtOfRallyCameraMod.Main.Load",
+  "AssemblyName": "ArtOfRallyCameraMod.dll",
   "HomePage": "https://github.com/Theaninova/aor-camera-mod",
   "Repository": "https://raw.githubusercontent.com/Theaninova/aor-camera-mod/main/Repository.json"
 }

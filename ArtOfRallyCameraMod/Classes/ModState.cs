@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CameraMod.Classes
+﻿namespace ArtOfRallyCameraMod.Classes
 {
     /// <summary>
     /// States related to the mod
     /// </summary>
-    public class ModState
+    public static class ModState
     {
         /// <summary>
         /// True if mod is initialized and the cameras are added to the game
         /// </summary>
-        public static bool IsInitalized;
+        public static bool IsInitialized;
         /// <summary>
         /// True if camera editor of the mod is active
         /// </summary>

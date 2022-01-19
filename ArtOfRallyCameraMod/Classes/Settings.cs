@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityModManagerNet;
+// ReSharper disable FieldCanBeMadeReadOnly.Global
 
-namespace CameraMod.Classes
+namespace ArtOfRallyCameraMod.Classes
 {
     /// <summary>
     /// Mod settings for camera editor and saved camera settings

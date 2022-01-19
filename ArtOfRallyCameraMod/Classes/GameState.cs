@@ -1,9 +1,9 @@
-﻿namespace CameraMod.Classes
+﻿namespace ArtOfRallyCameraMod.Classes
 {
     /// <summary>
     /// States related to the game
     /// </summary>
-    public class GameState
+    public static class GameState
     {
         /// <summary>
         /// True if a rally is active on a stage

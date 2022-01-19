@@ -1,4 +1,6 @@
-﻿using ArtOfRallyCameraMod.Camera;
+﻿using System.Reflection;
+using ArtOfRallyCameraMod.Camera;
+using HarmonyLib;
 using UnityModManagerNet;
 
 namespace ArtOfRallyCameraMod
@@ -10,6 +12,9 @@ namespace ArtOfRallyCameraMod
         // ReSharper disable once UnusedMember.Local
         private static bool Load(UnityModManager.ModEntry modEntry)
         {
+            var harmony = new Harmony(modEntry.Info.Id);
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
+
             Settings = UnityModManager.ModSettings.Load<Settings.Settings>(modEntry);
             modEntry.OnUpdate = CameraHandler.OnUpdate;
             modEntry.OnFixedGUI = EditorGUI.OnFixedGUI;

@@ -24,7 +24,7 @@ namespace ArtOfRallyCameraMod.Settings
 
         [Draw("Reset Camera")] public KeyBinding ResetCamera = new KeyBinding { keyCode = KeyCode.KeypadMultiply };
 
-        [Header("Camera 8 (Defaults: 7.0 | 2.0 | -1.0)"), Space(15)] [Draw("Distance")]
+        [Header("Custom Camera 1 (Defaults: 7.0 | 2.0 | -1.0)"), Space(15)] [Draw("Distance")]
         public float Camera8Distance = 7.0f;
 
         [Draw("Height")] public float Camera8Height = 2.0f;
@@ -34,7 +34,7 @@ namespace ArtOfRallyCameraMod.Settings
         [Draw("Yaw Reset Speed", DrawType.Slider, Min = 0, Max = 20)]
         public float Camera8YawResetSpeed = 10.0f;
 
-        [Header("Camera 9 (Defaults: 10.0 | 3.0 | -1.5)"), Space(15)] [Draw("Distance")]
+        [Header("Custom Camera 2 (Defaults: 10.0 | 3.0 | -1.5)"), Space(15)] [Draw("Distance")]
         public float Camera9Distance = 10.0f;
 
         [Draw("Height")] public float Camera9Height = 3.0f;

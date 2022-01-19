@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using ArtOfRallyCameraMod.Camera;
 using HarmonyLib;
+// ReSharper disable UnusedType.Global
+// ReSharper disable UnusedMember.Global
+
 
 namespace ArtOfRallyCameraMod.Patches.CarCameras
 {
@@ -23,6 +26,8 @@ namespace ArtOfRallyCameraMod.Patches.CarCameras
                 new CameraAngle(camera.distance, camera.height, camera.initialPitchAngle, camera.cameraType));
 
             CameraHandler.LoadCamerasFromSettings();
+
+            CameraHandler.IsInitialized = true;
         }
     }
 }

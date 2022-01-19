@@ -1,5 +1,8 @@
 ﻿using ArtOfRallyCameraMod.Camera;
 using HarmonyLib;
+// ReSharper disable UnusedType.Global
+// ReSharper disable UnusedMember.Global
+
 
 namespace ArtOfRallyCameraMod.Patches.PixulPhotoMode
 {

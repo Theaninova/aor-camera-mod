@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using ArtOfRallyCameraMod.Camera;
 using HarmonyLib;
-using UnityEngine;
 
 // ReSharper disable UnusedType.Global
 // ReSharper disable UnusedMember.Global

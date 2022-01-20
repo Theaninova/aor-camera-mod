@@ -65,14 +65,12 @@ namespace ArtOfRallyCameraMod.Camera
                         Main.Settings.Camera8Distance = CameraHandler.CameraAngles[camIndex].distance;
                         Main.Settings.Camera8Height = CameraHandler.CameraAngles[camIndex].height;
                         Main.Settings.Camera8Angle = CameraHandler.CameraAngles[camIndex].initialPitchAngle;
-                        Main.Settings.Camera8YawResetSpeed = CameraHandler.YawResetSpeeds[camIndex];
                         Main.Settings.Save(modEntry);
                         break;
                     case 9:
                         Main.Settings.Camera9Distance = CameraHandler.CameraAngles[camIndex].distance;
                         Main.Settings.Camera9Height = CameraHandler.CameraAngles[camIndex].height;
                         Main.Settings.Camera9Angle = CameraHandler.CameraAngles[camIndex].initialPitchAngle;
-                        Main.Settings.Camera9YawResetSpeed = CameraHandler.YawResetSpeeds[camIndex];
                         Main.Settings.Save(modEntry);
                         break;
                 }

@@ -10,10 +10,17 @@ namespace ArtOfRallyCameraMod.Patches.SettingsSelectable
         // ReSharper disable once InconsistentNaming
         public static void Postfix(global::SettingsSelectable __instance)
         {
-            if (__instance.settingsType != global::SettingsSelectable.SettingsType.CameraPreset) return;
-
-            __instance.stringList.Add("Custom Camera 1");
-            __instance.stringList.Add("Custom Camera 2");
+            // ReSharper disable once SwitchStatementMissingSomeEnumCasesNoDefault
+            switch (__instance.settingsType)
+            {
+                case global::SettingsSelectable.SettingsType.CameraPreset:
+                    __instance.stringList.Add("Custom Camera 1");
+                    __instance.stringList.Add("Custom Camera 2");
+                    break;
+                case global::SettingsSelectable.SettingsType.CameraRotationDamping:
+                    __instance.stringList = SelectableStringLists.PercentageList_StartAtZeroPercentDouble;
+                    break;
+            }
         }
     }
 }

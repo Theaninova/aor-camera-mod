@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using UnityModManagerNet;
 
 namespace ArtOfRallyCameraMod.Camera
@@ -42,12 +41,10 @@ namespace ArtOfRallyCameraMod.Camera
             CameraAngles[CustomCamera1].distance = Main.Settings.Camera8Distance;
             CameraAngles[CustomCamera1].height = Main.Settings.Camera8Height;
             CameraAngles[CustomCamera1].initialPitchAngle = Main.Settings.Camera8Angle;
-            YawResetSpeeds[CustomCamera1] = Main.Settings.Camera8YawResetSpeed;
 
             CameraAngles[CustomCamera2].distance = Main.Settings.Camera9Distance;
             CameraAngles[CustomCamera2].height = Main.Settings.Camera9Height;
             CameraAngles[CustomCamera2].initialPitchAngle = Main.Settings.Camera9Angle;
-            YawResetSpeeds[CustomCamera2] = Main.Settings.Camera9YawResetSpeed;
         }
     }
 }

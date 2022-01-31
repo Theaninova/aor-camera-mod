@@ -1,6 +1,6 @@
 # Art Of Rally Camera Mod
 
-[![](https://img.shields.io/github/v/release/Theaninova/aor-camera-mod?label=Download)](https://github.com/Theaninova/Art-Of-Rally-Reset-Visualizer/releases/latest)
+[![](https://img.shields.io/github/v/release/Theaninova/aor-camera-mod?label=Download)](https://github.com/Theaninova/aor-camera-mod/releases/latest)
 ![](https://img.shields.io/badge/Game%20Version-v1.3.3a-blue)
 [![Art Or Rally Discord](https://badgen.net/discord/members/Sx3e7qGTh9)](https://discord.gg/Sx3e7qGTh9)
 

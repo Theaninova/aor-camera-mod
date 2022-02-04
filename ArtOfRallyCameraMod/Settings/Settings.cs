@@ -7,6 +7,9 @@ namespace ArtOfRallyCameraMod.Settings
 {
     public class Settings : UnityModManager.ModSettings, IDrawable
     {
+        [Draw("YES KEEP MY CAMERA GOD DAMN IT")]
+        public bool NoOnFlyCameraSwitch = true;
+        
         [Header("Camera Stiffness (Requires Restart)")] [Draw("Minimum Stiffness")]
         public float MinimumStiffness = 0.7f;
 
